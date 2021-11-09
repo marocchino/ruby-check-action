@@ -2,7 +2,7 @@
   <a href="https://github.com/actions/typescript-action/actions"><img alt="typescript-action status" src="https://github.com/actions/typescript-action/workflows/build-test/badge.svg"></a>
 </p>
 
-# 🚧Ruby Check Action (wip)🚧
+# Ruby Check Action
 
 Run `ruby -w -c` and anotate it with [Problem Matchers](https://github.com/actions/toolkit/blob/f0b00fd201c7ddf14e1572a10d5fb4577c4bd6a2/packages/core/README.md)
 This action is useful when you want to detect syntax errors of test skipped files in CI.
