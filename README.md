@@ -84,6 +84,8 @@ jobs:
 
 ## Inputs
 
+### `switch`
+
 **Optional**, Switch that pass to ruby. This defaults to `-wc`.
 
 ### `paths`
@@ -91,8 +93,6 @@ jobs:
 **Optional**, Filters the path of ruby files.
 If value need to be more than one line, it should be multiline string not an array.
 This defaults to `**/*.rb`.
-
-### `switch`
 
 ### `GITHUB_TOKEN`
 
