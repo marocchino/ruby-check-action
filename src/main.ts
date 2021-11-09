@@ -10,19 +10,10 @@ async function run(): Promise<void> {
     const globber = await glob.create('**/*.rb')
     const rubyFiles = await globber.glob()
     const workingPath = process.cwd()
+    rubyFiles.map(file => file.replace(`${workingPath}/`, ''))
 
     if (rubyFiles.length > 0) {
-      const options = {
-        listeners: {
-          stdout: (data: Buffer) => {
-            core.info(data.toString().replace(`${workingPath}/`, ''))
-          },
-          stderr: (data: Buffer) => {
-            core.error(data.toString().replace(`${workingPath}/`, ''))
-          }
-        }
-      }
-      await exec.exec('ruby', ['-wc', ...rubyFiles], options)
+      await exec.exec('ruby', ['-wc', ...rubyFiles])
     } else {
       core.info('No ruby files found')
     }

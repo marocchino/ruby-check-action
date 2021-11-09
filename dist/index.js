@@ -47,18 +47,9 @@ function run() {
             const globber = yield glob.create('**/*.rb');
             const rubyFiles = yield globber.glob();
             const workingPath = process.cwd();
+            rubyFiles.map(file => file.replace(`${workingPath}/`, ''));
             if (rubyFiles.length > 0) {
-                const options = {
-                    listeners: {
-                        stdout: (data) => {
-                            core.info(data.toString().replace(`${workingPath}/`, ''));
-                        },
-                        stderr: (data) => {
-                            core.error(data.toString().replace(`${workingPath}/`, ''));
-                        }
-                    }
-                };
-                yield exec.exec('ruby', ['-wc', ...rubyFiles], options);
+                yield exec.exec('ruby', ['-wc', ...rubyFiles]);
             }
             else {
                 core.info('No ruby files found');
