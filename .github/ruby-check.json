@@ -2,13 +2,13 @@
   "problemMatcher": [
     {
       "owner": "ruby-check",
+      "severity": "error",
       "pattern": [
         {
-          "regexp": "^(.+):(\\d+):\\s(syntax error|warning)[,:]\\s(.+)$",
+          "regexp": "^(.+):(\\d+):\\s(.+)$",
           "file": 1,
           "line": 2,
-          "severity": 3,
-          "message": 4
+          "message": 3
         }
       ]
     }
