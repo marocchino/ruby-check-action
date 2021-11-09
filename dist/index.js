@@ -49,7 +49,9 @@ function run() {
             if (rubyFiles.length > 0) {
                 const workingPath = process.cwd();
                 rubyFiles = rubyFiles.map(file => file.replace(`${workingPath}/`, ''));
-                yield exec.exec('ruby', ['-wc', ...rubyFiles]);
+                for (const file of rubyFiles) {
+                    yield exec.exec('ruby', ['-wc', file]);
+                }
             }
             else {
                 core.info('No ruby files found');

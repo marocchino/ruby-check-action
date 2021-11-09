@@ -13,7 +13,9 @@ async function run(): Promise<void> {
     if (rubyFiles.length > 0) {
       const workingPath = process.cwd()
       rubyFiles = rubyFiles.map(file => file.replace(`${workingPath}/`, ''))
-      await exec.exec('ruby', ['-wc', ...rubyFiles])
+      for (const file of rubyFiles) {
+        await exec.exec('ruby', ['-wc', file])
+      }
     } else {
       core.info('No ruby files found')
     }
