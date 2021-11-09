@@ -5,7 +5,7 @@ import * as path from 'path'
 
 async function run(): Promise<void> {
   try {
-    const matchersPath = path.join(__dirname, '../..', '.github')
+    const matchersPath = path.join(__dirname, '..', '.github')
     core.info(`##[add-matcher]${path.join(matchersPath, 'ruby-check.json')}`)
     const globber = await glob.create('**/*.rb')
     const rubyFiles = await globber.glob()

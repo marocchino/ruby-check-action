@@ -42,7 +42,7 @@ const path = __importStar(__nccwpck_require__(622));
 function run() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const matchersPath = path.join(__dirname, '../..', '.github');
+            const matchersPath = path.join(__dirname, '..', '.github');
             core.info(`##[add-matcher]${path.join(matchersPath, 'ruby-check.json')}`);
             const globber = yield glob.create('**/*.rb');
             const rubyFiles = yield globber.glob();
