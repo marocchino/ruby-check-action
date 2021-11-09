@@ -9,6 +9,8 @@ This action is useful when you want to detect syntax errors of test skipped file
 
 ## Usage
 
+### basic
+
 ```yaml
 name: test
 
@@ -29,7 +31,68 @@ jobs:
       - uses: marocchino/ruby-check-action@v1
 ```
 
+### report error only
+
+```yaml
+name: test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+      - uses: marocchino/ruby-check-action@v1
+        with:
+          switch: '-c'
+```
+
+### smaller scope of paths
+
+```yaml
+name: test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+      - uses: marocchino/ruby-check-action@v1
+        with:
+          paths: |
+            lib/**/*.rb
+            db/**/*.rb
+            config/**/*.rb
+```
+
 ## Inputs
+
+**Optional**, Switch that pass to ruby. This defaults to `-wc`.
+
+### `paths`
+
+**Optional**, Filters the path of ruby files.
+If value need to be more than one line, it should be multiline string not an array.
+This defaults to `**/*.rb`.
+
+### `switch`
 
 ### `GITHUB_TOKEN`
 

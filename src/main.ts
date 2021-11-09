@@ -7,14 +7,16 @@ async function run(): Promise<void> {
   try {
     const matchersPath = path.join(__dirname, '..', '.github')
     core.info(`##[add-matcher]${path.join(matchersPath, 'ruby-check.json')}`)
-    const globber = await glob.create('**/*.rb')
+    const rubySwitch = core.getInput('switch', {required: true})
+    const paths = core.getInput('paths', {required: true})
+    const globber = await glob.create(paths)
     let rubyFiles = await globber.glob()
 
     if (rubyFiles.length > 0) {
       const workingPath = process.cwd()
       rubyFiles = rubyFiles.map(file => file.replace(`${workingPath}/`, ''))
       for (const file of rubyFiles) {
-        await exec.exec('ruby', ['-wc', file])
+        await exec.exec('ruby', [rubySwitch, file])
       }
     } else {
       core.info('No ruby files found')

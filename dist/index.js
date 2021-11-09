@@ -44,13 +44,15 @@ function run() {
         try {
             const matchersPath = path.join(__dirname, '..', '.github');
             core.info(`##[add-matcher]${path.join(matchersPath, 'ruby-check.json')}`);
-            const globber = yield glob.create('**/*.rb');
+            const rubySwitch = core.getInput('switch', { required: true });
+            const paths = core.getInput('paths', { required: true });
+            const globber = yield glob.create(paths);
             let rubyFiles = yield globber.glob();
             if (rubyFiles.length > 0) {
                 const workingPath = process.cwd();
                 rubyFiles = rubyFiles.map(file => file.replace(`${workingPath}/`, ''));
                 for (const file of rubyFiles) {
-                    yield exec.exec('ruby', ['-wc', file]);
+                    yield exec.exec('ruby', [rubySwitch, file]);
                 }
             }
             else {

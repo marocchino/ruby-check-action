@@ -2,6 +2,14 @@ name: 'Ruby Check Action'
 description: 'Run `ruby -w -c` and anotate it with Problem Matchers'
 author: 'marocchino'
 inputs:
+  switch:
+    description: 'Switch that pass to ruby. This defaults to "-wc".'
+    default: '-wc'
+    required: false
+  paths:
+    description: 'Filters the path of ruby files. If value need to be more than one line, it should be multiline string not an array. This defaults to "**/*.rb".'
+    default: '**/*.rb'
+    required: false
   GITHUB_TOKEN:
     description: 'The GitHub access token (e.g. secrets.GITHUB_TOKEN) used to create or update the comment. This defaults to {{ github.token }}.'
     default: '${{ github.token }}'
