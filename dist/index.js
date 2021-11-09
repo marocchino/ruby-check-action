@@ -48,16 +48,15 @@ function run() {
             const paths = core.getInput('paths', { required: true });
             const globber = yield glob.create(paths);
             let rubyFiles = yield globber.glob();
-            if (rubyFiles.length > 0) {
-                const workingPath = process.cwd();
-                rubyFiles = rubyFiles.map(file => file.replace(`${workingPath}/`, ''));
-                for (const file of rubyFiles) {
-                    yield exec.exec('ruby', [rubySwitch, file]);
-                }
-            }
-            else {
+            if (rubyFiles.length === 0) {
                 core.info('No ruby files found');
+                return;
             }
+            const workingPath = process.cwd();
+            rubyFiles = rubyFiles.map(file => file.replace(`${workingPath}/`, ''));
+            yield Promise.all(rubyFiles.map((file) => __awaiter(this, void 0, void 0, function* () {
+                yield exec.exec('ruby', [rubySwitch, file]);
+            })));
         }
         catch (error) {
             if (error instanceof Error)
