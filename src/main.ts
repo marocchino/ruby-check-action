@@ -9,7 +9,11 @@ async function run(): Promise<void> {
     core.info(`##[add-matcher]${path.join(matchersPath, 'ruby-check.json')}`)
     const globber = await glob.create('**/*.rb')
     const rubyFiles = await globber.glob()
-    await exec.exec('ruby', ['-wc', ...rubyFiles])
+    if (rubyFiles.length > 0) {
+      await exec.exec('ruby', ['-wc', ...rubyFiles])
+    } else {
+      core.info('No ruby files found')
+    }
   } catch (error) {
     if (error instanceof Error) core.setFailed(error.message)
   }

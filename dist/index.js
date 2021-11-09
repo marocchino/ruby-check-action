@@ -46,7 +46,12 @@ function run() {
             core.info(`##[add-matcher]${path.join(matchersPath, 'ruby-check.json')}`);
             const globber = yield glob.create('**/*.rb');
             const rubyFiles = yield globber.glob();
-            yield exec.exec('ruby', ['-wc', ...rubyFiles]);
+            if (rubyFiles.length > 0) {
+                yield exec.exec('ruby', ['-wc', ...rubyFiles]);
+            }
+            else {
+                core.info('No ruby files found');
+            }
         }
         catch (error) {
             if (error instanceof Error)
