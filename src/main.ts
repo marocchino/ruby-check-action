@@ -9,14 +9,16 @@ async function run(): Promise<void> {
     core.info(`##[add-matcher]${path.join(matchersPath, 'ruby-check.json')}`)
     const globber = await glob.create('**/*.rb')
     const rubyFiles = await globber.glob()
+    const workingPath = process.cwd()
+
     if (rubyFiles.length > 0) {
       const options = {
         listeners: {
           stdout: (data: Buffer) => {
-            core.info(data.toString())
+            core.info(data.toString().replace(`${workingPath}/`, ''))
           },
           stderr: (data: Buffer) => {
-            core.info(data.toString())
+            core.info(data.toString().replace(`${workingPath}/`, ''))
           }
         }
       }

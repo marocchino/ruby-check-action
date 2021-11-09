@@ -46,14 +46,15 @@ function run() {
             core.info(`##[add-matcher]${path.join(matchersPath, 'ruby-check.json')}`);
             const globber = yield glob.create('**/*.rb');
             const rubyFiles = yield globber.glob();
+            const workingPath = process.cwd();
             if (rubyFiles.length > 0) {
                 const options = {
                     listeners: {
                         stdout: (data) => {
-                            core.info(data.toString());
+                            core.info(data.toString().replace(`${workingPath}/`, ''));
                         },
                         stderr: (data) => {
-                            core.info(data.toString());
+                            core.info(data.toString().replace(`${workingPath}/`, ''));
                         }
                     }
                 };
