@@ -47,7 +47,17 @@ function run() {
             const globber = yield glob.create('**/*.rb');
             const rubyFiles = yield globber.glob();
             if (rubyFiles.length > 0) {
-                yield exec.exec('ruby', ['-wc', ...rubyFiles]);
+                const options = {
+                    listeners: {
+                        stdout: (data) => {
+                            core.info(data.toString());
+                        },
+                        stderr: (data) => {
+                            core.info(data.toString());
+                        }
+                    }
+                };
+                yield exec.exec('ruby', ['-wc', ...rubyFiles], options);
             }
             else {
                 core.info('No ruby files found');

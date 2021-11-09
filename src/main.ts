@@ -10,7 +10,17 @@ async function run(): Promise<void> {
     const globber = await glob.create('**/*.rb')
     const rubyFiles = await globber.glob()
     if (rubyFiles.length > 0) {
-      await exec.exec('ruby', ['-wc', ...rubyFiles])
+      const options = {
+        listeners: {
+          stdout: (data: Buffer) => {
+            core.info(data.toString())
+          },
+          stderr: (data: Buffer) => {
+            core.info(data.toString())
+          }
+        }
+      }
+      await exec.exec('ruby', ['-wc', ...rubyFiles], options)
     } else {
       core.info('No ruby files found')
     }
