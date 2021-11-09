@@ -54,7 +54,7 @@ function run() {
                             core.info(data.toString().replace(`${workingPath}/`, ''));
                         },
                         stderr: (data) => {
-                            core.info(data.toString().replace(`${workingPath}/`, ''));
+                            core.error(data.toString().replace(`${workingPath}/`, ''));
                         }
                     }
                 };

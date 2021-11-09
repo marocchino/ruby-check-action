@@ -18,7 +18,7 @@ async function run(): Promise<void> {
             core.info(data.toString().replace(`${workingPath}/`, ''))
           },
           stderr: (data: Buffer) => {
-            core.info(data.toString().replace(`${workingPath}/`, ''))
+            core.error(data.toString().replace(`${workingPath}/`, ''))
           }
         }
       }
