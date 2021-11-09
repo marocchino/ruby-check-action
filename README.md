@@ -10,9 +10,23 @@ This action is useful when you want to detect syntax errors of test skipped file
 ## Usage
 
 ```yaml
-- uses: marocchino/ruby-check-action@v1
-  with:
-    github_token: ${{ github.token }}
+name: test
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.6
+      - uses: marocchino/ruby-check-action@v1
 ```
 
 ## Inputs
