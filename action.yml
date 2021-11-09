@@ -1,11 +1,11 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Ruby Check Action'
+description: 'Run `ruby -w -c` and anotate it with Problem Matchers'
+author: 'marocchino'
 inputs:
-  milliseconds: # change this
-    required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+  GITHUB_TOKEN:
+    description: 'The GitHub access token (e.g. secrets.GITHUB_TOKEN) used to create or update the comment. This defaults to {{ github.token }}.'
+    default: '${{ github.token }}'
+    required: false
 runs:
   using: 'node12'
   main: 'dist/index.js'
