@@ -1,5 +1,5 @@
 name: 'Ruby Check Action'
-description: 'Run `ruby -w -c` and anotate it with Problem Matchers'
+description: 'Run `ruby -wc` and anotate it with Problem Matchers'
 author: 'marocchino'
 inputs:
   switch:

@@ -4,7 +4,7 @@
 
 # Ruby Check Action
 
-Run `ruby -w -c` and anotate it with [Problem Matchers](https://github.com/actions/toolkit/blob/f0b00fd201c7ddf14e1572a10d5fb4577c4bd6a2/packages/core/README.md)
+Run `ruby -wc` and anotate it with [Problem Matchers](https://github.com/actions/toolkit/blob/f0b00fd201c7ddf14e1572a10d5fb4577c4bd6a2/packages/core/README.md)
 This action is useful when you want to detect syntax errors of test skipped files in CI.
 
 ## Usage
