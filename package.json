@@ -25,9 +25,9 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.6.0",
+    "@actions/core": "^1.8.2",
     "@actions/exec": "^1.1.1",
-    "@actions/glob": "^0.2.1"
+    "@actions/glob": "^0.3.0"
   },
   "devDependencies": {
     "@types/node": "^17.0.23",
@@ -35,7 +35,7 @@
     "@vercel/ncc": "^0.33.4",
     "eslint": "^8.13.0",
     "eslint-plugin-github": "^4.3.6",
-    "eslint-plugin-jest": "^26.1.4",
+    "eslint-plugin-jest": "^26.2.2",
     "jest": "^27.5.1",
     "js-yaml": "^4.1.0",
     "prettier": "2.6.2",
