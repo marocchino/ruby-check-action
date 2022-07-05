@@ -25,12 +25,12 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.8.2",
+    "@actions/core": "^1.9.0",
     "@actions/exec": "^1.1.1",
     "@actions/glob": "^0.3.0"
   },
   "devDependencies": {
-    "@types/node": "^17.0.35",
+    "@types/node": "^18.0.1",
     "@typescript-eslint/parser": "^5.27.0",
     "@vercel/ncc": "^0.34.0",
     "eslint": "^8.16.0",
