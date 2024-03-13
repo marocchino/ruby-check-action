@@ -24,11 +24,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.6
-      - uses: marocchino/ruby-check-action@v1
+          ruby-version: 3.2
+      - uses: marocchino/ruby-check-action@v2
 ```
 
 ### report error only
@@ -46,11 +46,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.6
-      - uses: marocchino/ruby-check-action@v1
+          ruby-version: 3.2
+      - uses: marocchino/ruby-check-action@v2
         with:
           switch: '-c'
 ```
@@ -70,11 +70,11 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.6
-      - uses: marocchino/ruby-check-action@v1
+          ruby-version: 3.2
+      - uses: marocchino/ruby-check-action@v2
         with:
           paths: |
             lib/**/*.rb
